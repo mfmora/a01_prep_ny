@@ -273,15 +273,45 @@ end
 
 class Array
   def merge_sort(&prc)
+    return [] if self.length < 1
+    return [self.first] if self.length == 1
 
+    prc ||= Proc.new {|x,y| x <=> y}
+
+    middle_index = self.length/2
+    left_sorted = self.take(middle_index).merge_sort(&prc)
+    right_sorted = self.drop(middle_index).merge_sort(&prc)
+    Array.merge(left_sorted, right_sorted, &prc)
   end
 
   def self.merge(left, right, &prc)
-
+    result = []
+    until left.empty? || right.empty?
+      if prc.call(left.first, right.first) < 1
+        result << left.shift
+      else
+        result << right.shift
+      end
+    end
+    result + left + right
   end
 
   def quick_sort(&prc)
-
+    prc ||= Proc.new {|x,y| x <=> y}
+    result = self.deep_dup
+    sorted = false
+    until sorted
+      (0...self.length-1).each do |index1|
+        sorted = true
+        (index1+1..self.length-1).each do |index2|
+          if prc.call(result[index1],result[index2]) == 1
+            sorted = false
+            result[index1], result[index2] = result[index2], result[index1]
+          end
+        end
+      end
+    end
+    result
   end
 
   def bsearch(target)
