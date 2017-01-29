@@ -111,7 +111,13 @@ end
 
 class Array
   def two_sum
-
+    result = []
+    (0...self.length-1).each do |first|
+      (first+1...self.length).each do |last|
+        result << [first, last] if self[first] + self[last] == 0
+      end
+    end
+    result
   end
 end
 
