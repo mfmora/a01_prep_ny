@@ -81,6 +81,16 @@ class String
 
   # Write a method that returns all substrings that are also palindromes
   def symmetric_substrings
+    result = []
+    (0...self.length-1).each do |index1|
+      (index1+1...self.length).each do |index2|
+        word = self[index1..index2]
+        if word == word.reverse
+          result << word unless result.include?(word)
+        end
+      end
+    end
+    result.select {|word| word.length > 2}
   end
 
 end
