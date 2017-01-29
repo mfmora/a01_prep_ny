@@ -9,6 +9,12 @@ class Hash
   end
 
   def my_merge(hash2)
+    merged = hash2.dup
+
+    self.each do |key,value|
+      merged[key] = value unless merged[key]
+    end
+    merged
   end
 
 end
