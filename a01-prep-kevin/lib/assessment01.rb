@@ -218,7 +218,9 @@ end
 
 class Array
   def deep_dup
-
+    self.map do |element|
+      element.is_a?(Array) ? element.deep_dup : element
+    end
   end
 
   # Def will not be on the assessment
