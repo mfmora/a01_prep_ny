@@ -75,6 +75,15 @@ class Array
 
   # Write a version of flatten that only flattens n levels of an array.
   def my_controlled_flatten(n)
+    result = []
+    self.each do |el|
+      if n > 0 && el.is_a?(Array)
+        result.concat(el.my_controlled_flatten(n - 1))
+      else
+        result << el
+      end
+    end
+    result
   end
 
   def my_zip(*arrs)
