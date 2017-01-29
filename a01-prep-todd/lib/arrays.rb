@@ -4,6 +4,13 @@ class Array
   # Write a method that returns an array of all of the pairs of indexes whose
   # elements sum to zero
   def two_sum
+    result = []
+    (0...self.length - 1).each do |index1|
+      (index1+1..self.length - 1).each do |index2|
+        result << [index1,index2] if self[index1] + self[index2] == 0
+      end
+    end
+    result
   end
 
   # Write a method that returns a hash containing any repeating elements as keys
