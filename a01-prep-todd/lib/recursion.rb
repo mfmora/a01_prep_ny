@@ -52,6 +52,11 @@ end
 
 # Write a recursive method that returns the first n number of fibonacci numbers in an array
 def fibs_rec(n)
+  return [0] if n == 1
+  return [0,1] if n == 2
+
+  fib = fibs_rec(n -1)
+  fib << fib[-1] + fib[-2]
 end
 
 # Write a recursive method subsets that will return all subsets of an array.
