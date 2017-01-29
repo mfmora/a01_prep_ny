@@ -71,6 +71,14 @@ end
 
 # Write a recursive method that returns all of the permutations of an array
 def permutations(array)
+  return [array] if array.length == 1
+
+  results = []
+  array.each_with_index do |el,index|
+    perms = permutations(array.take(index)+array.drop(index+1))
+    results += perms.map { |per| [el] + per}
+  end
+  results
 end
 
 # Write a recursive method that returns an array of the best change given a target amouunt
