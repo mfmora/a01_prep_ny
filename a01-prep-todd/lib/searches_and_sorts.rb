@@ -39,9 +39,24 @@ class Array
   end
 
   def merge_sort(&prc)
+    return self if self.length <= 1
+    prc ||= Proc.new { |x,y| x <=> y}
+    middle = self.length/2
+    lef_sorted = self.take(middle).merge_sort(&prc)
+    right_sorted = self.drop(middle).merge_sort(&prc)
+    Array.merge(lef_sorted, right_sorted, &prc)
   end
 
   def self.merge(left, right, &prc)
+    sorted = []
+    until left.empty? || right.empty?
+      if prc.call(left.first,right.first) == 1
+        sorted << right.shift
+      else
+        sorted << left.shift
+      end
+    end
+    sorted + left + right
   end
 
   def my_quick_sort(&prc)
