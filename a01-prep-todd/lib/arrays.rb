@@ -43,6 +43,9 @@ class Array
 
   # Write a method that returns all of the unique elements in an array
   def my_uniq
+    result = []
+    self.each {|el| result << el unless result.include?(el)}
+    result
   end
 
   # Write a method that tranposes an array (see Array#transpose)
