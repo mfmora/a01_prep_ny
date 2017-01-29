@@ -106,6 +106,12 @@ class Array
   end
 
   def my_join(str = "")
+    result = ""
+    self.each do |el|
+      result += el.to_s
+      result += str unless self.last == el
+    end
+    result
   end
 
   def my_reverse
