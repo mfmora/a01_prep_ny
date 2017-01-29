@@ -115,6 +115,11 @@ class Array
   end
 
   def my_reverse
+    result = []
+    self.each_with_index do |el,index|
+      result[self.length - 1 - index] = el
+    end
+    result
   end
 
 end
