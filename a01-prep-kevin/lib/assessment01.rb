@@ -234,7 +234,12 @@ class Array
   # [1, 3, 4, 3, 0, 3, 0].dups => { 3 => [1, 3, 5], 0 => [4, 6] }
 
   def dups
-
+    result = {}
+    self.each_with_index do |el,index|
+      result[el] = [] unless result.include?(el)
+      result[el] << index
+    end
+    result.select {|_,v| v.length > 1}
   end
 end
 
