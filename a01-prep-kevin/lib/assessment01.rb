@@ -1,108 +1,54 @@
-require 'byebug'
 class Array
   def my_each(&prc)
-    self.length.times do |index|
-      prc.call(self[index])
-    end
+
   end
 
   def my_each_with_index(&prc)
-    self.length.times do |index|
-      prc.call(self[index],index)
-    end
+
   end
 
   def my_select(&prc)
-    result = []
-    self.my_each do |el|
-      result << el if prc.call(el)
-    end
-    result
+
   end
 
   def my_reject(&prc)
-    result = []
-    self.my_each do |el|
-      result << el unless prc.call(el)
-    end
-    result
+
   end
 
   def my_any?(&prc)
-    result = false
-    self.my_each do |el|
-      result ||= prc.call(el)
-    end
-    result
+
   end
 
   def my_all?(&prc)
-    result = true
-    self.my_each do |el|
-      result &&= prc.call(el)
-    end
-    result
+
   end
 
   def my_zip(*arrs)
-    zipped = []
-    self.each_with_index do |el,index|
-      zip = [el]
-      arrs.each do |array|
-        zip << array[index]
-      end
-      zipped << zip
-    end
-    zipped
+
   end
 
-  def my_rotate(num = 1)
-    result = []
-    self.each_with_index do |el,index|
-      new_index = (index - num) % self.length
-      result[new_index] = el
-    end
-    result
+  def my_rotate(num)
+
   end
 
   def my_join(str = "")
-    result = ""
-    self.each do |el|
-      result += el.to_s
-      result += str unless el == self.last
-    end
-    result
+
   end
 
   def my_reverse
-    result = []
-    self.each {|el| result.unshift(el)}
-    result
+
   end
 
   def my_inject(acc = nil, &prc)
-    acc = self.shift if acc.nil?
 
-    self.each do |el|
-      acc = prc.call(acc,el)
-    end
-    acc
   end
 
   def my_flatten
-    result = []
-    self.each do |el|
-      el.is_a?(Array) ? result.concat(el.my_flatten) : result << el
-    end
-    result
+
   end
 
   def my_uniq
-    result = []
-    self.each do |el|
-      result << el unless result.include?(el)
-    end
-    result
+
   end
 end
 
@@ -111,13 +57,7 @@ end
 
 class Array
   def two_sum
-    result = []
-    (0...self.length-1).each do |first|
-      (first+1...self.length).each do |last|
-        result << [first, last] if self[first] + self[last] == 0
-      end
-    end
-    result
+
   end
 end
 
@@ -125,17 +65,11 @@ end
 # You may wish to use an is_prime? helper method.
 
 def primes(num)
-  result = []
-  count = 2
-  until result.length == num
-    result << count if is_prime?(count)
-    count += 1
-  end
-  result
+
 end
 
 def is_prime?(num)
-  (2...num).none? {|n| num % n == 0}
+
 end
 
 # Write a method, `digital_root(num)`. It should Sum the digits of a positive
@@ -144,25 +78,14 @@ end
 # "digital root". **Do not use string conversion within your method.**
 
 def digital_root(num)
-  return num if num < 10
 
-  result = digits(num).inject(:+)
-  result > 9 ? digital_root(result) : result
-end
-
-def digits(num)
-  return [num] if num < 10
-  result = [num % 10]
-  result.concat(digits(num/10))
 end
 
 # Write a function sum_to(n) that uses recursion to calculate the sum from
 # 1 to n (inclusive of n).
 
 def sum_to(n)
-  return nil if n < 1
-  return n if n == 1
-  n + sum_to(n - 1)
+
 end
 
 # Write a function add_numbers(nums) that takes in an array of Fixnums and
