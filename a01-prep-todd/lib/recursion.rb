@@ -62,6 +62,10 @@ end
 # Write a recursive method subsets that will return all subsets of an array.
 class Array
   def subsets
+    return [[]] if self.length == 0
+
+    subs = self.take(self.length-1).subsets
+    subs + subs.map {|el| el + [self.last] }
   end
 end
 
