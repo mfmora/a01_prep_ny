@@ -16,6 +16,12 @@ class Array
   # Write a method that returns a hash containing any repeating elements as keys
   # with the values set to an array of the indexes of each repeat
   def dups
+    result = {}
+    self.each_with_index do |el,index|
+      result[el] = [] unless result[el]
+      result[el] << index
+    end
+    result.select {|_,v| v.length > 1}
   end
 
   # Write a method that returns the sum of all elements in the array
