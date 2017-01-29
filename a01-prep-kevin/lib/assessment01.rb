@@ -195,7 +195,10 @@ end
 # is 1!, the 3rd factorial is 2!, etc.
 
 def factorials_rec(n)
+  return [1] if n == 1
 
+  factorial = (1..n-1).inject(:*)
+  factorials_rec(n - 1) << factorial
 end
 
 def fibs_rec(n)
