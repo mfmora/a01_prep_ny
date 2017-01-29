@@ -185,7 +185,9 @@ end
 # Return an array of all numbers in the range, excluding max (recursive)
 
 def range(min, max)
-
+  return [] if min >= max
+  result = [min]
+  result.concat(range(min + 1, max))
 end
 
 # Write a recursive method that returns the first "num" factorial numbers.
