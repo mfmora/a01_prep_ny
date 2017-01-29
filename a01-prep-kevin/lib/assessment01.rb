@@ -261,7 +261,13 @@ class String
   end
 
   def substrings
-
+    result = []
+    (0...self.length-1).each do |start|
+      (start+1..self.length-1).each do |finish|
+        result << word = self[start..finish]
+      end
+    end
+    result
   end
 end
 
