@@ -1,3 +1,4 @@
+require 'byebug'
 class Array
   def my_each(&prc)
     self.length.times do |index|
@@ -83,13 +84,17 @@ class Array
     acc = self.shift if acc.nil?
 
     self.each do |el|
-      acc = prc.call(acc,el) 
+      acc = prc.call(acc,el)
     end
     acc
   end
 
   def my_flatten
-
+    result = []
+    self.each do |el|
+      el.is_a?(Array) ? result.concat(el.my_flatten) : result << el
+    end
+    result
   end
 
   def my_uniq
