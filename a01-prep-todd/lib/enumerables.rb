@@ -97,6 +97,12 @@ class Array
   end
 
   def my_rotate(num=1)
+    result = []
+    self.each_with_index do |el, index|
+      new_index = (index - num) % self.length
+      result[new_index] = el
+    end
+    result
   end
 
   def my_join(str = "")
