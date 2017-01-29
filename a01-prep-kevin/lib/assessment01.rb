@@ -144,7 +144,16 @@ end
 # "digital root". **Do not use string conversion within your method.**
 
 def digital_root(num)
+  return num if num < 10
 
+  result = digits(num).inject(:+)
+  result > 9 ? digital_root(result) : result
+end
+
+def digits(num)
+  return [num] if num < 10
+  result = [num % 10]
+  result.concat(digits(num/10))
 end
 
 # Write a function sum_to(n) that uses recursion to calculate the sum from
