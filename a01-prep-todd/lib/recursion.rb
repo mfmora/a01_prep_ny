@@ -38,6 +38,9 @@ end
 
 # Write a recursive method that exponentiates base ** power without using the ** method
 def exp(base, power)
+  return 1 if power == 0
+
+  base * exp(base,power-1)
 end
 
 # Write a recursive method that deep dups an array
