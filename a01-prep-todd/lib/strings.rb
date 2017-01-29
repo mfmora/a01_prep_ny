@@ -1,5 +1,5 @@
 #### Strings ####
-
+require 'byebug'
 # Write a method that capitalizes each word in a string like a book title
 # Do not capitalize words like 'a', 'and', 'of', 'over' or 'the'
 def titleize(title)
@@ -19,6 +19,22 @@ end
 # 'pearl' => 'earlpay'
 # 'quick' => 'ickquay'
 def translate(sentence)
+  vowel = %w(a e i o u)
+  sentence.split.map do |word|
+    if vowel.include?(word[0])
+      word + "ay"
+    else
+      index = 0
+      next_letter = word[index]
+      until vowel.include?(next_letter)
+        index += 1
+        next_letter = word[index]
+      end
+      index += 1 if word[index - 1] == "q"
+      word[index..-1] + word[0...index] + "ay"
+    end
+  end.join(" ")
+
 end
 
 # Write a method that caesar shifts a string by a number of shifts
