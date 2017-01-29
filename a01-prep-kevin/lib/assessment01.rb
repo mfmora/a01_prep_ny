@@ -212,7 +212,8 @@ end
 # return b^n recursively. Accept negative value for n
 
 def exponent(base, exp)
-
+  return 1 if exp == 0
+  exp > 0 ? base * exponent(base,exp - 1) : (1.0/base) * exponent(base,exp + 1)
 end
 
 class Array
