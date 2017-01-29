@@ -1,14 +1,22 @@
 class Array
   def my_each(&prc)
-
+    self.length.times do |index|
+      prc.call(self[index])
+    end
   end
 
   def my_each_with_index(&prc)
-
+    self.length.times do |index|
+      prc.call(self[index],index)
+    end
   end
 
   def my_select(&prc)
-
+    result = []
+    self.my_each do |el|
+      result << el if prc.call(el)
+    end
+    result
   end
 
   def my_reject(&prc)
