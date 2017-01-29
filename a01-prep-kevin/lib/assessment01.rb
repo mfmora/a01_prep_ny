@@ -74,7 +74,9 @@ class Array
   end
 
   def my_reverse
-
+    result = []
+    self.each {|el| result.unshift(el)}
+    result
   end
 
   def my_inject(acc = nil, &prc)
