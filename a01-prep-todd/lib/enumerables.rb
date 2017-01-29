@@ -12,6 +12,17 @@ end
 
 # Write a method that returns an array of the first n number of primes numbers
 def primes(n)
+  result = []
+  counter = 2
+  until result.length == n
+    result << counter if is_prime?(counter)
+    counter += 1
+  end
+  result
+end
+
+def is_prime?(n)
+  (2...n).none? {|num| n % num == 0}
 end
 
 class Array
