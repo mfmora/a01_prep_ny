@@ -66,6 +66,11 @@ class Array
   end
 
   def my_flatten
+    result = []
+    self.each do |el|
+      el.is_a?(Array) ? result.concat(el.my_flatten) : result << el
+    end
+    result
   end
 
   # Write a version of flatten that only flattens n levels of an array.
