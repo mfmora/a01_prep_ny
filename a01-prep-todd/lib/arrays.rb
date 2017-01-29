@@ -63,5 +63,10 @@ class Array
   # Write a method that returns the median of elements in an array
   # If the length is even, return the average of the middle two elements
   def median
+    return nil if self.empty?
+    middle = self.sort[(self.length - 1)/2]
+    middle_right = self.sort[self.length/2]
+
+    self.length % 2 == 0 ? (middle + middle_right)/2.0 : middle
   end
 end
