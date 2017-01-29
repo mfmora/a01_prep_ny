@@ -87,6 +87,13 @@ class Array
   end
 
   def my_zip(*arrs)
+    result = []
+    self.each_with_index do |el,index|
+      inside = [el]
+      arrs.each {|sub_el| inside << sub_el[index]}
+      result << inside
+    end
+    result
   end
 
   def my_rotate(num=1)
