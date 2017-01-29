@@ -125,11 +125,17 @@ end
 # You may wish to use an is_prime? helper method.
 
 def primes(num)
-
+  result = []
+  count = 2
+  until result.length == num
+    result << count if is_prime?(count)
+    count += 1
+  end
+  result
 end
 
 def is_prime?(num)
-
+  (2...num).none? {|n| num % n == 0}
 end
 
 # Write a method, `digital_root(num)`. It should Sum the digits of a positive
