@@ -7,6 +7,7 @@ end
 
 # Write a method that doubles each element in an array
 def doubler(array)
+  array.map {|el| el*2}
 end
 
 # Write a method that returns an array of the first n number of primes numbers
