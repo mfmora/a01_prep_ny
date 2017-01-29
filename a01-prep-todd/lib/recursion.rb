@@ -31,6 +31,9 @@ end
 
 # Write a recursive method that returns the sum of all elements in an array
 def sum(nums)
+  result = 0
+  nums.each { |el| result += el}
+  result
 end
 
 # Write a recursive method that exponentiates base ** power without using the ** method
