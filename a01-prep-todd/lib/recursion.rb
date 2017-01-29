@@ -1,7 +1,18 @@
+require 'byebug'
 #### Recursion ####
 
 # Write a recursive method that returns the first "num" factorial numbers.
 def digital_root(num)
+  return num if num < 10
+
+  result = digits(num).inject(:+)
+  result > 9 ? digital_root(result) : result
+end
+
+def digits(num)
+  return [num] if num < 10
+  result = [num%10]
+  result.concat(digits(num/10))
 end
 
 # Write a recursive method that returns an array of first n number of factorials
