@@ -50,6 +50,14 @@ class Array
 
   # Write a method that tranposes an array (see Array#transpose)
   def my_transpose
+    result = []
+    max_index = self.first.length
+    (0...max_index).each do |index|
+      sub_array = []
+      self.each {|el| sub_array << el[index]}
+      result << sub_array
+    end
+    result
   end
 
   # Write a method that returns the median of elements in an array
