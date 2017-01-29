@@ -26,6 +26,9 @@ class Array
 
   # Write a method that returns the sum of all elements in the array
   def sum
+    result = 0
+    self.each {|el| result+=el}
+    result
   end
 
   # Write a method that squares each element in the array
