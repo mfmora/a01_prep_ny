@@ -169,7 +169,8 @@ end
 # returns the sum of those numbers. Write this method recursively.
 
 def add_nums(nums)
-
+  return nums.first if nums.length == 1
+  nums.pop + add_nums(nums)
 end
 
 # Let's write a method that will solve Gamma Function recursively. The Gamma
