@@ -52,6 +52,11 @@ class Array
   end
 
   def my_any?(&prc)
+    result = false
+    self.my_each do |el|
+      result ||= prc.call(el)
+    end
+    result
   end
 
   def my_all?(&prc)
