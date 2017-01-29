@@ -44,7 +44,15 @@ class Array
   end
 
   def my_zip(*arrs)
-
+    zipped = []
+    self.each_with_index do |el,index|
+      zip = [el]
+      arrs.each do |array|
+        zip << array[index]
+      end
+      zipped << zip
+    end
+    zipped
   end
 
   def my_rotate(num)
