@@ -202,7 +202,11 @@ def factorials_rec(n)
 end
 
 def fibs_rec(n)
+  return [1] if n == 1
+  return [1,1] if n == 2
 
+  recursion = fibs_rec(n - 1)
+  recursion << recursion[-1] + recursion[-2]
 end
 
 # return b^n recursively. Accept negative value for n
