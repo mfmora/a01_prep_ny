@@ -17,6 +17,9 @@ end
 
 # Write a recursive method that returns an array of first n number of factorials
 def factorials_rec(num)
+  return [1] if num == 1
+  
+  factorials_rec(num - 1) << (1..num-1).inject(:*)
 end
 
 # Write a recursive method that returns an array of numbers between min and max
