@@ -80,7 +80,12 @@ class Array
   end
 
   def my_inject(acc = nil, &prc)
+    acc = self.shift if acc.nil?
 
+    self.each do |el|
+      acc = prc.call(acc,el) 
+    end
+    acc
   end
 
   def my_flatten
