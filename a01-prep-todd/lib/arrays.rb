@@ -33,10 +33,12 @@ class Array
 
   # Write a method that squares each element in the array
   def square!
+    self.map! {|el| el*el}
   end
 
   # Write a method that squares each element in the array, but does not modify the array
   def square
+    self.dup.square!
   end
 
   # Write a method that returns all of the unique elements in an array
