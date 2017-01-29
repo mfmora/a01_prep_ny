@@ -156,4 +156,7 @@ end
 
 # Write a recursive method that returns the sum of the first n even numbers
 def first_even_numbers_sum(n)
+  return 0 if n == 0
+
+  first_even_numbers_sum(n - 1) + 2*n
 end
