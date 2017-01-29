@@ -250,7 +250,14 @@ class String
   # Only include substrings of length > 1.
 
   def symmetric_substrings
-
+    result = []
+    (0...self.length-1).each do |start|
+      (start+1..self.length-1).each do |finish|
+        word = self[start..finish]
+        result << word if word == word.reverse
+      end
+    end
+    result
   end
 
   def substrings
