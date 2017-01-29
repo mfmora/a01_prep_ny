@@ -36,6 +36,11 @@ class Array
   end
 
   def my_select(&prc)
+    result = []
+    self.my_each do |el|
+      result << el if prc.call(el)
+    end
+    result
   end
 
   def my_reject(&prc)
