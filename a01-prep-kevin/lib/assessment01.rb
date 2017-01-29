@@ -36,7 +36,11 @@ class Array
   end
 
   def my_all?(&prc)
-
+    result = true
+    self.my_each do |el|
+      result &&= prc.call(el)
+    end
+    result
   end
 
   def my_zip(*arrs)
