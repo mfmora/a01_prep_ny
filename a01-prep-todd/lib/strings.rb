@@ -56,6 +56,11 @@ end
 # Write a method that sorts the characters in a string according to the order of an alphabet array
 # Use alphabetical order by default if an alphabet is not provided
 def jumble_sort(str, alphabet = nil)
+  alphabet ||= ("a".."z").to_a
+  array = str.split("")
+  array.sort do |letter1, letter2|
+    alphabet.index(letter1) <=> alphabet.index(letter2)
+  end.join("")
 end
 
 class String
