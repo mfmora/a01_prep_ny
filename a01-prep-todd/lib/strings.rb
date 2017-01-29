@@ -3,6 +3,15 @@
 # Write a method that capitalizes each word in a string like a book title
 # Do not capitalize words like 'a', 'and', 'of', 'over' or 'the'
 def titleize(title)
+  connectors = %w(a and of over the)
+  title.capitalize!
+  title.split.map do |word|
+    if connectors.include?(word)
+      word
+    else
+      word[0].upcase + word[1..-1]
+    end
+  end.join(" ")
 end
 
 # Write a method that translates a sentence into pig latin. You may want a helper method.
@@ -31,5 +40,5 @@ class String
   # Write a method that returns all substrings that are also palindromes
   def symmetric_substrings
   end
-  
+
 end
