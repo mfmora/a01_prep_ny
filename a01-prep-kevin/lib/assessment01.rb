@@ -315,6 +315,19 @@ class Array
   end
 
   def bsearch(target)
+    return nil if self.length < 1
+    
+    return nil if self.length == 1 && self.first != target
+    middle = (self.length)/2
+    return middle if self[middle] == target
 
+    if self[middle] > target
+      left_size = self.take(middle).bsearch(target)
+      return left_size unless left_size.nil?
+    else
+      right_size = self.drop(middle).bsearch(target)
+      return middle + right_size unless right_size.nil?
+    end
+    nil
   end
 end
