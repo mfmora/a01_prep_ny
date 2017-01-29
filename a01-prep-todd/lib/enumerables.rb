@@ -60,6 +60,9 @@ class Array
   end
 
   def my_all?(&prc)
+    result = true
+    self.my_each { |el| result &&= prc.call(el)}
+    result
   end
 
   def my_flatten
