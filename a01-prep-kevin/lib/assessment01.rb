@@ -20,7 +20,11 @@ class Array
   end
 
   def my_reject(&prc)
-
+    result = []
+    self.my_each do |el|
+      result << el unless prc.call(el)
+    end
+    result
   end
 
   def my_any?(&prc)
