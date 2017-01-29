@@ -67,6 +67,16 @@ class String
 
   # Write a method that returns all subwords within a string that are included in a dictionary array
   def real_words_in_string(dictionary)
+    result = []
+    (0...self.length).each do |index1|
+      (index1...self.length).each do |index2|
+        word = self[index1..index2]
+        if dictionary.include?(word)
+          result <<  word unless result.include?(word)
+        end
+      end
+    end
+    result
   end
 
   # Write a method that returns all substrings that are also palindromes
