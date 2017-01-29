@@ -28,6 +28,7 @@ end
 class Array
 
   def my_each(&prc)
+    self.length.times { |index| prc.call(self[index]) }
   end
 
   def my_each_with_index(&prc)
