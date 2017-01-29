@@ -2,6 +2,7 @@
 
 # Write a method that returns an array of all factors of a number
 def factors(num)
+  (1..num).select {|n| num % n == 0}
 end
 
 # Write a method that doubles each element in an array
