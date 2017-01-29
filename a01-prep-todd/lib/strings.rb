@@ -40,6 +40,17 @@ end
 # Write a method that caesar shifts a string by a number of shifts
 # You can ssume all characters are lowercase
 def caesar_cipher(str, shift)
+  result = []
+  letters = ("a".."z").to_a
+  str.split("").each do |letter|
+    if letter == " "
+      result << letter
+    else
+      new_letter = (letters.index(letter) + shift) % 26
+      result << letters[new_letter]
+    end
+  end
+  result.join
 end
 
 # Write a method that sorts the characters in a string according to the order of an alphabet array
