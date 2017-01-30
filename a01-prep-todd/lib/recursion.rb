@@ -15,6 +15,17 @@ def digits(num)
   result.concat(digits(num/10))
 end
 
+def substrings_rec(string)
+  return [string] if string.length == 1
+
+  result = [string]
+  sub1 = substrings_rec(string[0..-2])
+  sub2 = substrings_rec(string[1..-1])
+  sub1.each {|sub| result << sub unless result.include?(sub)}
+  sub2.each {|sub| result << sub unless result.include?(sub)}
+  result
+end
+
 # Write a recursive method that returns an array of first n number of factorials
 def factorials_rec(num)
   return [1] if num == 1
